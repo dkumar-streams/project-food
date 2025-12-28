@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AshwiniHomeFoods-Pickles and Snacks</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+    :root{--accent:#ff6b35;--muted:#6c757d}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:#f7f8fb;}
+    /* Flash message container */
+    .flash-container {
+      overflow: hidden; /* hides overflow text */
+      background-color: #fff8e6;
+      color: #7a4a00;
+      padding: 8px 0;
+      position:relative;
+      margin-top:15px;
+      margin-bottom:18px;
+      border-left:4px solid rgba(255,107,53,0.18);
+    }
+
+    /* Flash message text */
+    .flash-message {
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 15px;
+      font-weight: 600;
+      color: #7a4a00;
+      animation: moveLeft 10s linear infinite ;
+    }
+
+    /* Animation: moves text left to right and back */
+    @keyframes moveLeft {
+     0%   { transform: translateX(100vw); }
+     100% { transform: translateX(-100%); } 
+    }
+    /* Card image sizing */
+    .card-img-small {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .site-container{max-width:1150px;margin:0 auto}
+    .navbar {background: #ffffff}
+    .navbar .navbar-brand{color:var(--accent);font-weight:700}
+    .card{border:none;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06);transition:transform .18s,box-shadow .18s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(16,24,40,0.12)}
+    .btn-order{background:var(--accent);border:none;color:#fff}
+    .btn-order:hover{background:#e65a2a}
+    .form-control.search-input{border-radius:999px;padding-left:1rem}
+    .card-title{font-size:1.05rem;font-weight:600}
+    .card-text{color:var(--muted)}
+  </style>
+</head>
+
+<body>
+  <!--h1>Hello, world!</!--h1>-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container-fluid site-container">
+      <a class="navbar-brand" href="#">AshwiniHomeFoods</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact Info
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">9421896258</a></li>
+              <li><a class="dropdown-item" href="#">5899764123</a></li>
+              <li>
+                <!-- <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" id="searchForm">
+          <input id="searchInput" class="form-control me-2 search-input" type="search" placeholder="Search for pickles, snacks..." aria-label="Search" />
+          <button id="searchBtn" class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flash-container">
+    <div class="flash-message">
+      AshwiniHomeFoods Where Taste and Quality Matters ! Order now
+    </div>
+  </div>
+
+  <div class="container my-4 site-container">
+  <div class="row" id="cardRow">
+    <!-- Cards will be injected here -->
+  </div>
+</div>
+
+<script>
+  // List of image filenames
+  const images = [
+    "Tomato Pickle.jpeg",
+    "Mango Pickle.jpeg",
+    "Mirchi Pickle.jpeg",
+    "Gongura Pickle.jpeg"
+  ];
+
+  const cardRow = document.getElementById("cardRow");
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("searchInput");
+
+    function renderCards(items) {
+      cardRow.innerHTML = "";
+      if (!items || items.length === 0) {
+        cardRow.innerHTML = '<div class="col-12"><p class="text-muted">No results found.</p></div>';
+        return;
+      }
+
+      items.forEach((img) => {
+        const title = img.split(".")[0];
+      const cardHTML = `
+      <div class="col-12 col-sm-6 col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="img/${img}" class="card-img-top img-fluid card-img-small" alt="${title}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${title.charAt(0).toUpperCase() + title.slice(1)}</h5>
+            <p class="card-text small mb-4">Handmade with quality ingredients — a specialty from AshwiniFoods.</p>
+            <div class="mt-auto"><a href="#" class="btn btn-order w-100">Available</a></div>
+          </div>
+        </div>
+      </div>
+      `;
+
+        cardRow.innerHTML += cardHTML;
+      });
+    }
+
+    // initial render
+    renderCards(images);
+
+    // handle search submit
+    searchForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const q = (searchInput.value || '').trim().toLowerCase();
+      if (!q) {
+        renderCards(images);
+        return;
+      }
+
+      // filter by filename or title
+      const filtered = images.filter(img => img.toLowerCase().includes(q));
+      renderCards(filtered);
+    });
+
+    // restore home view when user clears the search input
+    searchInput.addEventListener('input', function (e) {
+      const q = (e.target.value || '').trim();
+      if (q === '') {
+        renderCards(images);
+        // scroll to top / home area so user sees all cards
+        try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (err) { window.scrollTo(0,0); }
+      }
+    });
+
+  // cards are rendered via renderCards(images)
+</script>
+  
+<!-- old searchcard() removed; new search handler is in the main script -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

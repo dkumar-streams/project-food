@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving Flash Message</title>
+  <style>
+    /* Navbar styling */
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* Flash message container */
+    .flash-container {
+      overflow: hidden; /* hides overflow text */
+      background-color: #4CAF50;
+      padding: 10px 0;
+    }
+
+    /* Flash message text */
+    .flash-message {
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      animation: moveText 6s linear infinite alternate;
+    }
+
+    /* Animation: moves text left to right and back */
+    @keyframes moveText {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    My Website Navbar
+  </div>
+
+  <!-- Flash Message -->
+  <div class="flash-container">
+    <div class="flash-message">
+      🚀 Welcome! This is a moving flash message below the navbar.
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div style="padding:20px;">
+    <p>Page content goes here...</p>
+  </div>
+
+</body>
+</html>
+<div class="col-md-4 my-3">
+  <div class="card" style="width: 20rem;height:20px;align-items:center;">
+  <img src="/img/img-1.jpeg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Tomato Pickle</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <a href="#" class="btn btn-warning">Order Now</a>
+  </div>
+</div>
+</div>
